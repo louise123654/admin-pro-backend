@@ -5,25 +5,26 @@ const generarJWT = ( uid ) => {
     return new Promise( ( resolve, reject ) => {
 
         const payload = {
-            uid
+            uid,
         };
     
         jwt.sign( payload, process.env.JWT_SECRET, {
             expiresIn: '12h'
-        }, ( err, token ) =>{
+        }, ( err, token ) => {
     
             if ( err ) {
                 console.log(err);
                 reject('No se pudo generar el JWT');
             } else {
-                resolve(token);
+                resolve( token );
             }
     
         });
-    
-    })
+
+    });
 
 }
+
 
 module.exports = {
     generarJWT,
